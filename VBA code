@@ -1,0 +1,1670 @@
+
+
+Dim a As String
+Dim tri As Boolean
+'Dim loopcount As Integer
+Dim st As Integer
+Private Declare PtrSafe Function URLDownloadToFile Lib "urlmon" _
+    Alias "URLDownloadToFileA" (ByVal pCaller As Long, ByVal szURL As String, _
+    ByVal szFileName As String, ByVal dwReserved As Long, ByVal lpfnCB As Long) As Long
+    
+    
+
+
+Private Sub CommandButton10_Click()
+'ShowFileDialog10
+End Sub
+
+Private Sub ComboBox2_Change()
+TextBox8.text = ComboBox2.text
+End Sub
+
+Private Sub CommandButton2_Click()
+ShowFileDialog2
+End Sub
+
+Private Sub CommandButton3_Click()
+ShowFileDialog3
+End Sub
+
+Private Sub CommandButton4_Click()
+ShowFileDialog4
+End Sub
+
+Private Sub CommandButton5_Click()
+ShowFileDialog5
+End Sub
+
+
+Private Sub CommandButtonupload_Click()
+ShowFileDialog0
+
+End Sub
+
+Private Sub CommandButton1_Click()
+ShowFileDialog1
+
+End Sub
+Function ShowFileDialog0()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = True
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text
+
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.jpg*,*.jpeg*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   Dim a, b, c As Integer
+   a = fDialog.SelectedItems.count
+   b = 1
+   
+   While b < 6
+   c = 1
+   While c < a + 1
+   If b = 1 Then
+   UserForm1.Image1.Picture = LoadPicture(fDialog.SelectedItems(c))
+   End If
+   If b = 2 Then
+   UserForm1.Image2.Picture = LoadPicture(fDialog.SelectedItems(c))
+   End If
+   If b = 3 Then
+   UserForm1.Image3.Picture = LoadPicture(fDialog.SelectedItems(c))
+   End If
+   If b = 4 Then
+   UserForm1.Image4.Picture = LoadPicture(fDialog.SelectedItems(c))
+   End If
+   If b = 5 Then
+   UserForm1.Image5.Picture = LoadPicture(fDialog.SelectedItems(c))
+   End If
+   c = c + 1
+   b = b + 1
+   Wend
+   Wend
+   
+   Dim ppath As String
+   ppath = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\1.jpeg"
+   UserForm1.Image1.Picture = LoadPicture(ppath)
+   
+   'UserForm1.Image2.Picture = LoadPicture(fDialog.SelectedItems(2))
+   'UserForm1.Image3.Picture = LoadPicture(fDialog.SelectedItems(3))
+   'UserForm1.Image4.Picture = LoadPicture(fDialog.SelectedItems(4))
+   'UserForm1.Image5.Picture = LoadPicture(fDialog.SelectedItems(5))
+   'UserForm1.ImageList1.ListImages (fDialog.SelectedItems)
+   'UserForm1.ImageCombo1.ComboItems (fDialog.SelectedItems)
+   'UserForm1.ImageCombo1.ComboItems.Add (fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+Function ShowFileDialog1()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = False
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = ""
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   UserForm1.Image1.Picture = LoadPicture(fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+Function ShowFileDialog2()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = False
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = ""
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   UserForm1.Image2.Picture = LoadPicture(fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+Function ShowFileDialog3()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = False
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = ""
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   UserForm1.Image3.Picture = LoadPicture(fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+Function ShowFileDialog4()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = False
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = ""
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   UserForm1.Image4.Picture = LoadPicture(fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+Function ShowFileDialog5()
+
+Dim fDialog As FileDialog, result As Integer
+Set fDialog = Application.FileDialog(msoFileDialogFilePicker)
+    
+'Optional: FileDialog properties
+fDialog.AllowMultiSelect = False
+fDialog.Title = "Select a file"
+fDialog.InitialFileName = ""
+'Optional: Add filters
+fDialog.Filters.Clear
+fDialog.Filters.Add "All files", "*.*"
+ 
+'Show the dialog. -1 means success!
+If fDialog.Show = -1 Then
+   Debug.Print fDialog.SelectedItems(1)
+   UserForm1.Image5.Picture = LoadPicture(fDialog.SelectedItems(1))
+   End If
+  
+  'a = fDialog.ButtonName
+End Function
+
+
+Private Sub TextBox1_Change()
+Dim a() As String
+Dim b, c As Integer
+TextBox1.text = Replace(TextBox1.text, "+", "")
+TextBox1.text = Replace(TextBox1.text, ":", "")
+TextBox1.text = Replace(TextBox1.text, "?", "")
+TextBox1.text = Replace(TextBox1.text, ".", "")
+TextBox1.text = Replace(TextBox1.text, "/", "")
+TextBox1.text = Replace(TextBox1.text, "\", "")
+TextBox1.text = Replace(TextBox1.text, "-", "")
+TextBox1.text = Replace(TextBox1.text, "<", "")
+TextBox1.text = Replace(TextBox1.text, ">", "")
+TextBox1.text = Trim(TextBox1.text)
+a = Split(TextBox1.text, vbNewLine)
+b = UBound(a) - LBound(a) + 1
+For c = 0 To b - 1
+If c = 0 Then
+spetext1.text = a(c)
+End If
+If c = 1 Then
+spetext2.text = a(c)
+End If
+If c = 2 Then
+spetext3.text = a(c)
+End If
+If c = 3 Then
+spetext4.text = a(c)
+End If
+If c = 4 Then
+spetext5.text = a(c)
+End If
+If c = 5 Then
+spetext6.text = a(c)
+End If
+If c = 6 Then
+spetext7.text = a(c)
+End If
+If c = 7 Then
+spetext8.text = a(c)
+End If
+If c = 8 Then
+spetext9.text = a(c)
+End If
+If c = 9 Then
+spetext10.text = a(c)
+End If
+If c = 10 Then
+spetext11.text = a(c)
+End If
+Next
+
+End Sub
+
+Private Sub TextBox10_Change()
+title_textbox.text = Left(TextBox10.text, 100)
+title_textbox.text = Replace(title_textbox.text, ":", "")
+title_textbox.text = Replace(title_textbox.text, "/", "")
+title_textbox.text = Replace(title_textbox.text, "\", "")
+title_textbox.text = Replace(title_textbox.text, "*", "")
+title_textbox.text = Replace(title_textbox.text, "?", "")
+title_textbox.text = Replace(title_textbox.text, "'", "")
+title_textbox.text = Replace(title_textbox.text, ".", "")
+title_textbox.text = Replace(title_textbox.text, "|", "")
+title_textbox.text = Replace(title_textbox.text, Chr(34), "")
+title_textbox.text = Trim(title_textbox.text)
+
+End Sub
+
+
+
+Function save_url1()
+        
+        Dim aa, aa1, aa2, url1, url2, url3, url4, size, jj As String
+        aa = Split(TextBox11.text, "hiRes")
+        size = UBound(aa) - LBound(aa)
+        jj = 0
+        If size > jj Then
+        aa1 = Split(aa(1), "https:")
+        aa2 = Split(aa1(1), ".jpg")
+        url1 = "https:" + aa2(0)
+        url1 = url1 + ".jpg"
+        If url1 <> "" Then
+        ComboBox1.AddItem (url1)
+        jj = jj + 1
+        End If
+        End If
+        
+        If size > jj Then
+        aa1 = Split(aa(2), "https:")
+        aa2 = Split(aa1(1), ".jpg")
+        url2 = "https:" + aa2(0)
+        url2 = url2 + ".jpg"
+        If url2 <> "" Then
+        ComboBox1.AddItem (url2)
+        jj = jj + 1
+        End If
+        End If
+        
+        If size > jj Then
+        aa1 = Split(aa(3), "https:")
+        aa2 = Split(aa1(1), ".jpg")
+        url3 = "https:" + aa2(0)
+        url3 = url3 + ".jpg"
+        If url3 <> "" Then
+        ComboBox1.AddItem (url3)
+        jj = jj + 1
+        End If
+        End If
+        
+        If size > jj Then
+        aa1 = Split(aa(4), "https:")
+        aa2 = Split(aa1(1), ".jpg")
+        url4 = "https:" + aa2(0)
+        url4 = url4 + ".jpg"
+        If url4 <> "" Then
+        ComboBox1.AddItem (url4)
+        jj = jj + 1
+        End If
+        End If
+        
+        If size > jj Then
+        aa1 = Split(aa(5), "https:")
+        aa2 = Split(aa1(1), ".jpg")
+        url5 = "https:" + aa2(0)
+        url5 = url5 + ".jpg"
+        If url5 <> "" Then
+        ComboBox1.AddItem (url5)
+        jj = jj + 1
+        End If
+        End If
+End Function
+Function save_url2()
+
+aa = Split(text12, "hiRes")
+        text12 = aa(1)
+        aa = Split(text12, "https:")
+        text = aa(1)
+        aa = Split(text12, ".jpg")
+        url2 = "https:" + aa(0)
+        url2 = url2 + ".jpg"
+        
+        If url2 <> "" Then
+        ListBox1.AddItem (url2)
+        End If
+End Function
+Function save_url3()
+aa = Split(text13, "hiRes")
+        text13 = aa(1)
+        aa = Split(text13, "https:")
+        text13 = aa(1)
+        aa = Split(text13, ".jpg")
+        url3 = "https:" + aa(0)
+        url3 = url3 + ".jpg"
+        
+        If url3 <> "" Then
+        ListBox1.AddItem (url3)
+        End If
+End Function
+Function save_url4()
+aa = Split(text14, "hiRes")
+        text14 = aa(1)
+        aa = Split(text14, "https:")
+        text14 = aa(1)
+        aa = Split(text14, ".jpg")
+        url4 = "https:" + aa(0)
+        url4 = url4 + ".jpg"
+        
+        If url4 <> "" Then
+        ListBox1.AddItem (url4)
+        End If
+End Function
+Function save_url5()
+aa = Split(text15, "hiRes")
+        text15 = aa(1)
+        aa = Split(text15, "https:")
+        text15 = aa(1)
+        aa = Split(text15, ".jpg")
+        url5 = "https:" + aa(0)
+        url5 = url5 + ".jpg"
+        text15 = aa(1)
+        If url5 <> "" Then
+        ListBox1.AddItem (url5)
+        End If
+        
+End Function
+
+Private Sub TextBox5_Change()
+TextBox5.text = Replace(TextBox5.text, "$", "")
+End Sub
+
+Private Sub TextBox6_Change()
+TextBox6.text = Replace(TextBox6.text, "Price:$", "")
+End Sub
+
+Private Sub TextBox8_Change()
+If (tri = False) Then
+Dim a() As String
+'TextBox8.text = Replace(TextBox8.text, " ", "?")
+'TextBox8.text = Replace(TextBox8.text, "&", "?&")
+a = Split(TextBox8.text, "&")
+TextBox8.text = a(0) + TextBox9.text
+TextBox8.text = Replace(TextBox8.text, "#", "")
+tri = True
+End If
+End Sub
+Sub DeleteAllShapes()
+'PURPOSE: Remove All Shape Objects From The Active Worksheet
+'SOURCE: www.TheSpreadsheetGuru.com/the-code-vault
+
+Dim shp As Shape
+
+For Each shp In ActiveSheet.Shapes
+   shp.Delete
+Next shp
+
+End Sub
+Public Sub Save_Web_Page_As_Text()
+   
+    Dim IE As Object
+    Dim url As String
+    Dim filename As String
+    
+    url = TextBox8.text
+    filename = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\webpagetext.txt"    'CHANGE PATH
+    
+    Set IE = CreateObject("InternetExplorer.Application")
+    With IE
+        .Visible = False
+        .Navigate url
+        While .Busy Or .ReadyState <> 4: DoEvents: Wend
+        While .Document.ReadyState <> "complete": DoEvents: Wend
+    
+        'Save to the text file
+        
+        Open filename For Output As #1
+        Print #1, .Document.body.innerText
+        Close #1
+        
+        '.Quit
+    End With
+    
+    Set IE = Nothing
+    
+End Sub
+Sub SearchTextFile()
+    
+    Dim strFilename, strSearch, StrSearch1 As String
+    strFilename = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\webpagetext.txt"
+    strSearch = "]," + Chr(34) + "title" + Chr(34) + ":" + Chr(34)
+    '(function(f) {f(window.P._namespace(+ Chr(34) +VAS_DSC+ Chr(34) +"));}(function(P) { // Entry point to initialize
+    StrSearch1 = "(function(f) {f(window.P._namespace(" + Chr(34) + "VAS_DSC" + Chr(34) + "));}(function(P) { // Entry point to initialize"
+    Const StrSearch2 = "Product Dimensions"
+    Const StrSearch3 = "Technical Specification"
+    Const StrSearch4 = "Warranty & Support"
+    Const StrSearch5 = "P.when('A').register("
+    Const StrSearch6 = "10 Days Replacement  "
+    Const StrSrch01 = "Buy used:"
+    Const StrSrch0 = "Buy new:"
+    Const StrSrch10 = "Price:"
+    Const StrSrch11 = "M.R.P.:"
+    
+           
+    Dim text, text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, strLine As String
+    Dim f, r, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, z, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, j, i As Integer
+    Dim lngLine As Long
+    Dim blnFound As Boolean
+    Dim vtemp As Variant
+    f = FreeFile
+    r = 0
+    Dim aaa As Integer
+    aaa = 0
+    j = 0
+    i = 0
+    k = 0
+    TextBox6.text = ""
+    TextBox5.text = ""
+    TextBox1.text = ""
+    Open strFilename For Input As #f
+    Do While Not EOF(f)
+        lngLine = lngLine + 1
+        Line Input #f, strLine
+        
+        If InStr(1, strLine, strSearch, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r = lngLine
+            z = r + 5
+            blnFound = True
+        End If
+        
+        If r <> 0 Then
+        If lngLine = r Then
+        Dim t() As String
+        Dim str1 As String
+        t = Split(strLine, "]," + Chr(34) + "title" + Chr(34) + ":" + Chr(34), 200)
+        str1 = t(1)
+        t = Split(str1, Chr(34))
+        str1 = t(0)
+        TextBox10.text = str1
+        End If
+        End If
+        
+        
+        
+        If InStr(1, strLine, StrSrch10, vbBinaryCompare) > 0 Then
+        Dim a() As String
+        a = Split(strLine, " ")
+        TextBox6.text = a(1)
+        a = Split(strLine, ".00")
+        TextBox6.text = a(0)
+        TextBox6.text = Replace(TextBox6.text, "Price:", "")
+        TextBox6.text = Replace(TextBox6.text, "?", "")
+        TextBox6.text = Replace(TextBox6.text, " ", "")
+        ElseIf InStr(1, strLine, StrSrch0, vbBinaryCompare) > 0 Then
+        r5 = lngLine
+        ElseIf InStr(1, strLine, StrSrch01, vbBinaryCompare) > 0 Then
+        r5 = lngLine
+        End If
+       If r5 <> 0 Then
+        If lngLine = r5 + 2 Then
+        TextBox6.text = strLine
+         'TextBox6.text = Replace(TextBox6.text, "Prezzo:", "")
+         'Dim a() As String
+         'a = Split(TextBox6.text, "€")
+         'TextBox6.text = a(0)
+        End If
+        End If
+        
+        
+        If InStr(1, strLine, StrSrch11, vbBinaryCompare) > 0 Then
+        r6 = lngLine
+        End If
+        If r6 <> 0 Then
+        If lngLine = r6 Then
+        Dim a01() As String
+        a01 = Split(strLine, " ")
+        TextBox5.text = a01(1)
+        a01 = Split(strLine, ".00")
+        TextBox5.text = a01(0)
+        'TextBox5.text = strLine
+         TextBox5.text = Replace(TextBox5.text, "M.R.P.:", "")
+         TextBox5.text = Replace(TextBox5.text, "?", "")
+         TextBox5.text = Replace(TextBox5.text, " ", "")
+         'a = Split(TextBox5.text, "€")
+         'TextBox5.text = a(0)
+        End If
+        End If
+        
+        
+        If TextBox5.text = "" Then
+        TextBox5.text = TextBox6.text
+        End If
+      
+        If TextBox6.text = "" Then
+        TextBox6.text = TextBox5.text
+        End If
+        
+       
+        
+
+            'TextBox9.text = strLine
+      
+        
+        If InStr(1, strLine, StrSearch1, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r2 = lngLine
+            z2 = r2 + 24
+            blnFound = True
+            
+        End If
+        If r2 <> 0 Then
+        
+        If lngLine = r2 + 10 Then
+        strLine = Replace(strLine, StrSearch1, "")
+        text2 = text2 + strLine
+        End If
+        If lngLine = r2 + 11 Then
+        text2 = text2 + strLine + vbNewLine
+        End If
+        If lngLine = r2 + 12 Then
+        text2 = text2 + strLine + vbNewLine
+        End If
+        If lngLine = r2 + 13 Then
+        text2 = text2 + strLine + vbNewLine
+        End If
+        If lngLine = r2 + 14 Then
+        text2 = text2 + strLine + vbNewLine
+        End If
+        TextBox1.text = text2
+        End If
+        
+       
+        
+        If InStr(1, strLine, StrSearch2, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r8 = lngLine
+            z8 = r8 + 7
+            blnFound = True
+            
+        End If
+        If r8 <> 0 Then
+        If lngLine = r8 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 1 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 2 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 3 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 4 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 5 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 6 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 7 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 8 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 9 Then
+        text = text + strLine + vbNewLine
+        
+        End If
+        If lngLine = r8 + 10 Then
+        text = text + strLine + vbNewLine
+        TextBox2.text = text
+        
+        End If
+        End If
+        
+        If TextBox2.text = "" Then
+        TextBox2.text = "****************"
+        End If
+        If InStr(1, strLine, StrSearch3, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r3 = lngLine
+            z3 = r3 + 7
+            blnFound = True
+            
+        End If
+        If r3 <> 0 Then
+        If lngLine = r3 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 1 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 2 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 3 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 4 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 5 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 6 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 7 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 8 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 9 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 10 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 11 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 12 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 13 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 14 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 15 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        If lngLine = r3 + 16 Then
+        text3 = text3 + strLine + vbNewLine
+        End If
+        TextBox3.text = text3
+        
+        End If
+        
+        
+        If TextBox3.text = "" Then
+        TextBox3.text = "****************"
+        End If
+        
+        If InStr(1, strLine, StrSearch4, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r4 = lngLine
+            z4 = r4 + 7
+            blnFound = True
+        End If
+      
+    
+        If r4 <> 0 Then
+        If lngLine = r4 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 1 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 2 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 3 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 4 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 5 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 6 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 7 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 8 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 9 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 10 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 11 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        If lngLine = r4 + 12 Then
+        text4 = text4 + strLine + vbNewLine
+        End If
+        TextBox4.text = text4
+        End If
+        If TextBox4.text = "" Then
+        TextBox4.text = "****************"
+        End If
+        
+        If InStr(1, strLine, StrSearch5, vbBinaryCompare) > 0 Then
+            'MsgBox "Search string found in line " & lngLine, vbInformation
+            'TextBox88.text = lngLine
+            r7 = lngLine
+            blnFound = True
+        End If
+        If r7 <> 0 Then
+        If lngLine = r7 Then
+        
+        text5 = strLine
+        TextBox11.text = text5
+        
+        
+        
+        End If
+        End If
+    Loop
+    If Not blnFound Then
+        'MsgBox "Search string not found", vbInformation
+    End If
+    Close #f
+End Sub
+Sub saveRiskParameterFile()
+
+    Dim myFile As String
+    Dim strURL As String
+            
+    strURL = "www.google.com"
+     
+    myFile = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\webpagetext.txt"
+     
+    With CreateObject("Microsoft.XMLHTML")
+        .Open "GET", strURL, False
+        .Send
+        mytext = .responsetext
+    End With
+     
+    With CreateObject("Scripting.FileSystemObject").CreateTextFile(myFile, True)
+        .Write (mytext)
+        .Close
+    End With
+     
+End Sub
+
+Function MkDir()
+Dim strDir As String
+Dim strPath As String
+Dim fso As FileSystemObject
+Set fso = New FileSystemObject
+Dim path As String
+
+'examples for what are the input arguments
+strDir = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\"
+strPath = title_textbox.text
+
+path = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text
+
+If Not fso.FolderExists(path) Then
+
+' doesn't exist, so create the folder
+          fso.CreateFolder (path)
+          st = 1
+Else
+'MsgBox "The Folder Already Exist"
+st = 0
+End If
+
+End Function
+Private Sub ToggleButton1_Click()
+Slide88.TextBox1.text = UserForm1.title_textbox.text
+Slide1.TextBox1.text = UserForm1.title_textbox.text
+Slide16.TextBox1.text = UserForm1.title_textbox.text
+Slide17.TextBox1.text = UserForm1.title_textbox.text
+Slide33.TextBox1.text = UserForm1.title_textbox.text
+Slide37.TextBox1.text = UserForm1.title_textbox.text
+Slide51.TextBox1.text = UserForm1.title_textbox.text
+Slide52.TextBox1.text = UserForm1.title_textbox.text
+Slide53.TextBox1.text = UserForm1.title_textbox.text
+Slide79.TextBox1.text = UserForm1.title_textbox.text
+Slide81.TextBox1.text = UserForm1.title_textbox.text
+Slide82.TextBox1.text = UserForm1.title_textbox.text
+Slide83.TextBox1.text = UserForm1.title_textbox.text
+Slide84.TextBox1.text = UserForm1.title_textbox.text
+Slide85.TextBox1.text = UserForm1.title_textbox.text
+Slide86.TextBox1.text = UserForm1.title_textbox.text
+Slide87.TextBox1.text = UserForm1.title_textbox.text
+End Sub
+
+
+
+Private Sub ToggleButton10_Click()
+ActivePresentation.CreateVideo _
+"D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + title_textbox.text + ".mp4", True, 5, 480, 30, 85
+ ToggleButton10.Enabled = False
+ UserForm1.ProgressBar1.Value = ActivePresentation.CreateVideoStatus
+ 
+End Sub
+
+Private Sub ToggleButton11_Click()
+Dim TextFile As Integer
+Dim FilePath As String
+
+'What is the file path and name for the new text file?
+  FilePath = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\url.txt"
+
+'Determine the next file number available for use by the FileOpen function
+  TextFile = FreeFile
+
+'Open the text file
+  Open FilePath For Output As TextFile
+
+'Write some lines of text
+If TextBox8.text = "" Then
+MsgBox "Enter URL_text"
+Else
+  Print #TextFile, TextBox8.text
+  Print #TextFile, TextBox10.text
+  Print #TextFile, TextBox1.text
+  Print #TextFile, TextBox8.text
+End If
+  
+'Save & Close Text File
+  Close TextFile
+  ToggleButton11.Enabled = False
+  
+End Sub
+
+Private Sub savecurrenturl()
+Dim TextFile As Integer
+Dim FilePath As String
+
+'What is the file path and name for the new text file?
+  FilePath = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\url.txt"
+
+'Determine the next file number available for use by the FileOpen function
+  TextFile = FreeFile
+
+'Open the text file
+  Open FilePath For Output As TextFile
+
+'Write some lines of text
+If TextBox8.text = "" Then
+MsgBox "Enter URL_text"
+Else
+  Print #TextFile, TextBox13.text
+    
+End If
+  
+'Save & Close Text File
+  Close TextFile
+  
+End Sub
+
+Private Sub loadcurrenturl()
+Dim TextFile As Integer
+Dim FilePath, textline As String
+
+'What is the file path and name for the new text file?
+  FilePath = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\url.txt"
+
+'Determine the next file number available for use by the FileOpen function
+  TextFile = FreeFile
+
+'Open the text file
+  Open FilePath For Input As TextFile
+    Line Input #TextFile, textline
+    
+
+       TextBox13.text = textline
+
+
+    
+
+  
+'Save & Close Text File
+  Close TextFile
+  
+End Sub
+
+
+Private Sub ToggleButton12_Click()
+ToggleButton7.Enabled = True
+ToggleButton8.Enabled = True
+ToggleButton9.Enabled = True
+ToggleButton10.Enabled = True
+ToggleButton11.Enabled = True
+End Sub
+
+Private Sub ToggleButton13_Click()
+ComboBox1.Clear
+Call Save_Web_Page_As_Text
+Call SearchTextFile
+Call MkDir
+ If TextBox1.text = "" Then
+        TextBox1.text = TextBox10.text
+        End If
+Call save_url1
+
+'Call save_url2
+'Call save_url3
+'Call save_url4
+'Call save_url5
+If st = 1 Then
+Dim coun, jj As Integer
+jj = 0
+coun = ComboBox1.ListCount
+If coun > jj Then
+Call URLDownloadToFile(0, ComboBox1.List(0), "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\1.jpg", 0, 0)
+jj = jj + 1
+End If
+If coun > jj Then
+Call URLDownloadToFile(0, ComboBox1.List(1), "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\2.jpg", 0, 0)
+jj = jj + 1
+End If
+If coun > jj Then
+Call URLDownloadToFile(0, ComboBox1.List(2), "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\3.jpg", 0, 0)
+jj = jj + 1
+End If
+If coun > jj Then
+Call URLDownloadToFile(0, ComboBox1.List(3), "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\4.jpg", 0, 0)
+jj = jj + 1
+End If
+If coun > jj Then
+Call URLDownloadToFile(0, ComboBox1.List(4), "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\5.jpg", 0, 0)
+jj = jj + 1
+End If
+
+Dim a, b, c, d, e As Integer
+Dim tet As String
+   a = ComboBox1.ListCount
+   b = 1
+   d = 5
+   e = 1
+   While b < 6
+   c = 1
+   While c < a + 1
+   If c = 1 Then
+   tet = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + CStr(e) + ".jpg"
+   UserForm1.Image1.Picture = LoadPicture(tet)
+   d = d - 1
+   e = e + 1
+   If e > a Then
+   e = 1
+   End If
+   End If
+   If c = 2 Then
+   tet = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + CStr(e) + ".jpg"
+   UserForm1.Image2.Picture = LoadPicture(tet)
+   d = d - 1
+   e = e + 1
+   If e > a Then
+   e = 1
+   End If
+   End If
+   If c = 3 Then
+   tet = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + CStr(e) + ".jpg"
+   UserForm1.Image3.Picture = LoadPicture(tet)
+   d = d - 1
+   e = e + 1
+   If e > a Then
+   e = 1
+   End If
+   End If
+   If c = 4 Then
+   tet = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + CStr(e) + ".jpg"
+   UserForm1.Image4.Picture = LoadPicture(tet)
+   d = d - 1
+   e = e + 1
+   If e > a Then
+   e = 1
+   End If
+   End If
+   If c = 5 Then
+   tet = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" + CStr(e) + ".jpg"
+   UserForm1.Image5.Picture = LoadPicture(tet)
+   d = d - 1
+   e = e + 1
+   If e > a Then
+   e = 1
+   End If
+   End If
+   c = c + 1
+   b = b + 1
+   Wend
+   Wend
+   Call ToggleButton7_Click
+   End If
+   If st = 0 Then
+   Call ToggleButton16_Click
+   End If
+'Call RemoveSounds
+TextBox7.text = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\Convert Text to Speech WAV.wav"
+'Call ToggleButton16_Click
+End Sub
+
+Sub RemoveSounds()
+
+    Dim oSl As Slide
+    Dim oSh As Shape
+    Dim x As Long
+
+    
+   
+        For x = oSl.Shapes.count To 1 Step -1
+            Set oSh = oSl.Shapes(x)
+            If oSh.Type = msoMedia Then
+                If oSh.MediaType = ppMediaTypeSound Then
+                    oSh.Delete
+                End If
+            End If
+        Next
+   
+ 
+
+End Sub
+
+Private Sub ToggleButton14_Click()
+Dim path, str As String
+Dim cpFileStream As New SpFileStream
+Dim Voice As New SpVoice
+
+cpFileStream.Format.Type = SAFT22kHz16BitMono
+path = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\Convert Text to Speech WAV.wav"
+str = TextBox1.text
+cpFileStream.Open path, SSFMCreateForWrite, False
+Set Voice.AudioOutputStream = cpFileStream
+Voice.Speak str, SVSFDefault
+cpFileStream.Close
+    Voice.WaitUntilDone (6000)
+    Set cpFileStream = Nothing
+End Sub
+Sub TestStringToWavFile()
+    'run this to make a wav file from a text input
+
+    Dim sP As String, sFN As String, sStr As String, sFP As String
+
+    'set parameter values
+    'paths
+    sFP = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\Convert Text to Speech WAV.wav" 'for example
+    'sFN = "Mytest.wav" 'overwrites if file name same
+    'sFP = sP & sFN
+    
+    'string to use for the recording
+    sStr = TextBox1.text
+    
+    'make voice wav file from string
+    StringToWavFile sStr, sFP
+
+End Sub
+
+Function StringToWavFile(sIn As String, sPath As String) As Boolean
+    'makes a spoken wav file from parameter text string
+    'sPath parameter needs full path and file name to new wav file
+    'Needs reference set to Microsoft Speech Object Library
+    
+    Dim fs As New SpFileStream
+    Dim Voice As New SpVoice
+
+    'set the audio format
+    fs.Format.Type = SAFT22kHz16BitMono
+
+    'create wav file for writing without events
+    fs.Open sPath, SSFMCreateForWrite, False
+ 
+    'Set wav file stream as output for Voice object
+    Set Voice.AudioOutputStream = fs
+
+    'send output to default wav file "SimpTTS.wav" and wait till done
+    Voice.Speak sIn, SVSFDefault
+
+    'Close file
+    fs.Close
+
+    'wait
+    Voice.WaitUntilDone (6000)
+
+    'release object variables
+    Set fs = Nothing
+    Set Voice.AudioOutputStream = Nothing
+
+    'transfers
+    StringToWavFile = True
+
+End Function
+
+Private Sub ToggleButton15_Click()
+comboboxVBA_Connect_To_MDB_ACCESS
+Dim strDir As String
+Dim strPath As String
+Dim fso As FileSystemObject
+Set fso = New FileSystemObject
+Dim path As String
+Dim b As Variant
+Dim a As Integer
+a = 0
+While a < ComboBox2.ListCount
+b = ListBox1.List(a)
+TextBox8.text = b
+ToggleButton13_Click
+
+'examples for what are the input arguments
+strDir = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\"
+strPath = title_textbox.text
+
+path = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text
+
+If Not fso.FolderExists(path) Then
+
+' doesn't exist, so create the folder
+          ToggleButton7_Click
+          Application.Wait (Now + TimeValue("0:01:00"))
+          
+'Else
+'MsgBox "The Folder Already Exist"
+End If
+
+a = a + 1
+Wend
+End Sub
+Sub comboboxVBA_Connect_To_MDB_ACCESS()
+ 
+    'Make Reference to Microsoft AxticX Data Objects Library
+    'Dim dbConn, dbRecSet As Object
+    'Set dbConn = New ADODB.Connection
+    'Set dbRecSet = New ADODB.recordset
+    Dim dbConn As ADODB.Connection, dbRecSet As ADODB.recordset
+    Dim sConnString As String, sQuery As String
+    Dim sDBPath As String
+    
+    'Define MDB ACCESS file path
+    sDBPath = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\vestitidb.accdb"
+    
+    'SQL Query String
+    sQuery = "SELECT ID,url from vestitidb;"
+    
+    
+    'ADODB Conenction String to initiate connection with MDB ACCESS
+    sConnString = "Provider=Microsoft.ace.OLEDB.12.0; Data Source=" & sDBPath & ";"
+    
+    'Open Connection
+    Set dbConn = New ADODB.Connection
+    dbConn.Open ConnectionString:=sConnString
+    
+    'Execute SQL Query & Get Records matching the query to recordset
+    Set dbRecSet = New ADODB.recordset
+    dbRecSet.Open Source:=sQuery, ActiveConnection:=dbConn
+    
+    'If Query Returned Values, Read them one by one
+    If (dbRecSet.RecordCount <> 0) Then
+        Do While Not dbRecSet.EOF
+            
+            ComboBox2.AddItem (dbRecSet.Fields(1).Value + "?")
+            ListBox1.AddItem (dbRecSet.Fields(1).Value + "?")
+            'Image1.Object = dbRecSet.Fields(3).Value
+            dbRecSet.MoveNext
+        Loop
+    End If
+    
+    
+    'Close Connection & RecordSet
+    
+    Set dbRecSet = Nothing
+    dbConn.Close
+    Set dbConn = Nothing
+End Sub
+
+
+Private Sub ToggleButton16_Click()
+Static a As Integer
+'1
+'If a > 5 Then
+'Call Test1
+'a = 0
+'GoTo 1:
+'Else
+a = a + 1
+TextBox12.Value = a
+ComboBox2.ListIndex = ComboBox2.ListIndex + 1
+tri = False
+If st = 1 Then
+Call Test1
+End If
+Call ToggleButton13_Click
+
+'End If
+End Sub
+Sub Test1()
+ Dim AckTime As Integer, InfoBox As Object
+
+ Set InfoBox = CreateObject("WScript.Shell")
+ AckTime = 10
+  Select Case InfoBox.PopUp("Click OK (this window closes automatically after 10 seconds).", _
+    AckTime, "This is your Message Box", 0)
+ Case 1, -1
+  Exit Sub
+ End Select
+ 
+End Sub
+
+Private Sub ToggleButton2_Click()
+Slide1.TextBox2.text = UserForm1.TextBox1.text
+Slide81.TextBox2 = UserForm1.spetext1.text
+Slide82.TextBox2 = UserForm1.spetext2.text
+Slide83.TextBox2 = UserForm1.spetext3.text
+Slide79.TextBox2 = UserForm1.spetext4.text
+Slide51.TextBox2 = UserForm1.spetext5.text
+Slide53.TextBox2 = UserForm1.spetext6.text
+Slide52.TextBox2 = UserForm1.spetext7.text
+Slide84.TextBox2 = UserForm1.spetext8.text
+Slide85.TextBox2 = UserForm1.spetext9.text
+Slide86.TextBox2 = UserForm1.spetext10.text
+Slide87.TextBox2 = UserForm1.spetext11.text
+
+End Sub
+
+
+Private Sub ToggleButton3_Click()
+'VBAProject.ShowSaveAsDialog
+Call Test1
+'UserForm1.Hide
+End Sub
+
+Private Sub ToggleButton4_Click()
+Dim count As Integer
+count = ComboBox1.ListCount
+If count = 5 Then
+Slide88.Image1.Picture = UserForm1.Image1.Picture
+Slide1.Image1.Picture = UserForm1.Image1.Picture
+Slide81.Image1.Picture = UserForm1.Image2.Picture
+Slide82.Image1.Picture = UserForm1.Image3.Picture
+Slide83.Image1.Picture = UserForm1.Image4.Picture
+Slide79.Image1.Picture = UserForm1.Image5.Picture
+Slide51.Image1.Picture = UserForm1.Image1.Picture
+Slide53.Image1.Picture = UserForm1.Image2.Picture
+Slide52.Image1.Picture = UserForm1.Image3.Picture
+Slide84.Image1.Picture = UserForm1.Image4.Picture
+Slide85.Image1.Picture = UserForm1.Image5.Picture
+Slide86.Image1.Picture = UserForm1.Image1.Picture
+Slide87.Image1.Picture = UserForm1.Image2.Picture
+Slide16.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image2.Picture = UserForm1.Image2.Picture
+Slide16.Image3.Picture = UserForm1.Image3.Picture
+Slide16.Image4.Picture = UserForm1.Image4.Picture
+Slide16.Image5.Picture = UserForm1.Image5.Picture
+End If
+
+If count = 4 Then
+Slide88.Image1.Picture = UserForm1.Image1.Picture
+Slide1.Image1.Picture = UserForm1.Image1.Picture
+Slide81.Image1.Picture = UserForm1.Image2.Picture
+Slide82.Image1.Picture = UserForm1.Image3.Picture
+Slide83.Image1.Picture = UserForm1.Image4.Picture
+Slide79.Image1.Picture = UserForm1.Image1.Picture
+Slide51.Image1.Picture = UserForm1.Image2.Picture
+Slide53.Image1.Picture = UserForm1.Image3.Picture
+Slide52.Image1.Picture = UserForm1.Image4.Picture
+Slide84.Image1.Picture = UserForm1.Image1.Picture
+Slide85.Image1.Picture = UserForm1.Image2.Picture
+Slide86.Image1.Picture = UserForm1.Image3.Picture
+Slide87.Image1.Picture = UserForm1.Image4.Picture
+Slide16.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image2.Picture = UserForm1.Image2.Picture
+Slide16.Image3.Picture = UserForm1.Image3.Picture
+Slide16.Image4.Picture = UserForm1.Image4.Picture
+Slide16.Image5.Picture = UserForm1.Image1.Picture
+End If
+
+If count = 3 Then
+Slide88.Image1.Picture = UserForm1.Image1.Picture
+Slide1.Image1.Picture = UserForm1.Image1.Picture
+Slide81.Image1.Picture = UserForm1.Image2.Picture
+Slide82.Image1.Picture = UserForm1.Image3.Picture
+Slide83.Image1.Picture = UserForm1.Image1.Picture
+Slide79.Image1.Picture = UserForm1.Image2.Picture
+Slide51.Image1.Picture = UserForm1.Image3.Picture
+Slide53.Image1.Picture = UserForm1.Image1.Picture
+Slide52.Image1.Picture = UserForm1.Image2.Picture
+Slide84.Image1.Picture = UserForm1.Image3.Picture
+Slide85.Image1.Picture = UserForm1.Image1.Picture
+Slide86.Image1.Picture = UserForm1.Image2.Picture
+Slide87.Image1.Picture = UserForm1.Image3.Picture
+Slide16.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image2.Picture = UserForm1.Image2.Picture
+Slide16.Image3.Picture = UserForm1.Image3.Picture
+Slide16.Image4.Picture = UserForm1.Image1.Picture
+Slide16.Image5.Picture = UserForm1.Image2.Picture
+End If
+
+If count = 2 Then
+Slide88.Image1.Picture = UserForm1.Image1.Picture
+Slide1.Image1.Picture = UserForm1.Image1.Picture
+Slide81.Image1.Picture = UserForm1.Image2.Picture
+Slide82.Image1.Picture = UserForm1.Image1.Picture
+Slide83.Image1.Picture = UserForm1.Image2.Picture
+Slide79.Image1.Picture = UserForm1.Image1.Picture
+Slide51.Image1.Picture = UserForm1.Image2.Picture
+Slide53.Image1.Picture = UserForm1.Image1.Picture
+Slide52.Image1.Picture = UserForm1.Image2.Picture
+Slide84.Image1.Picture = UserForm1.Image1.Picture
+Slide85.Image1.Picture = UserForm1.Image2.Picture
+Slide86.Image1.Picture = UserForm1.Image1.Picture
+Slide87.Image1.Picture = UserForm1.Image2.Picture
+Slide16.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image2.Picture = UserForm1.Image2.Picture
+Slide16.Image3.Picture = UserForm1.Image1.Picture
+Slide16.Image4.Picture = UserForm1.Image2.Picture
+Slide16.Image5.Picture = UserForm1.Image1.Picture
+End If
+
+If count = 1 Then
+Slide88.Image1.Picture = UserForm1.Image1.Picture
+Slide1.Image1.Picture = UserForm1.Image1.Picture
+Slide81.Image1.Picture = UserForm1.Image1.Picture
+Slide82.Image1.Picture = UserForm1.Image1.Picture
+Slide83.Image1.Picture = UserForm1.Image1.Picture
+Slide79.Image1.Picture = UserForm1.Image1.Picture
+Slide51.Image1.Picture = UserForm1.Image1.Picture
+Slide53.Image1.Picture = UserForm1.Image1.Picture
+Slide52.Image1.Picture = UserForm1.Image1.Picture
+Slide84.Image1.Picture = UserForm1.Image1.Picture
+Slide85.Image1.Picture = UserForm1.Image1.Picture
+Slide86.Image1.Picture = UserForm1.Image1.Picture
+Slide87.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image1.Picture = UserForm1.Image1.Picture
+Slide16.Image2.Picture = UserForm1.Image1.Picture
+Slide16.Image3.Picture = UserForm1.Image1.Picture
+Slide16.Image4.Picture = UserForm1.Image1.Picture
+Slide16.Image5.Picture = UserForm1.Image1.Picture
+End If
+End Sub
+
+Private Sub ToggleButton5_Click()
+Slide17.TextBox2.text = UserForm1.TextBox2.text
+Slide37.TextBox2.text = UserForm1.TextBox3.text
+Slide33.TextBox2.text = UserForm1.TextBox4.text
+End Sub
+
+Private Sub ToggleButton6_Click()
+Slide88.TextBox2.text = UserForm1.TextBox5.text
+Slide88.TextBox3.text = UserForm1.TextBox6.text
+End Sub
+
+Private Sub ToggleButton7_Click()
+If title_textbox.text = "" Then
+title_textbox.SetFocus
+'MsgBox "Enter title_text"
+Else
+Call ToggleButton1_Click
+
+End If
+
+If TextBox1.text = "" Then
+TextBox1.SetFocus
+MsgBox "Enter title_text"
+Else
+Call ToggleButton2_Click
+End If
+
+
+If TextBox5.text = "" Then
+TextBox5.SetFocus
+'MsgBox "Enter MRP"
+Else
+If TextBox6.text = "" Then
+TextBox6.SetFocus
+'MsgBox "Enter Price"
+Else
+Call ToggleButton6_Click
+End If
+End If
+
+If TextBox2.text = "" Then
+TextBox2.SetFocus
+MsgBox "ENter Technical Details"
+Else
+If TextBox3.text = "" Then
+TextBox3.SetFocus
+MsgBox "Enter Additional Information"
+Else
+If TextBox4.text = "" Then
+TextBox4.SetFocus
+MsgBox "Enter Warranty & Support"
+Else
+Call ToggleButton5_Click
+
+End If
+End If
+End If
+ToggleButton7.Enabled = False
+Call createcall
+Call ToggleButton16_Click
+End Sub
+Private Sub createcall()
+
+Call ToggleButton14_Click
+Call ToggleButton8_Click
+
+Call ToggleButton4_Click
+
+With Application.ActivePresentation
+    .Save
+End With
+Call ToggleButton9_Click
+
+Call ToggleButton10_Click
+Call ToggleButton11_Click
+TextBox13.Value = ComboBox2.text
+TextBox13.text = ComboBox2.text
+Call savecurrenturl
+End Sub
+
+
+
+Public Sub HTTPConnectivityTest()
+  
+   'Instantiating the SOAP Connector
+   Dim connector As New MSSOAPLib30.HttpConnector30
+  
+   'Setting up the Proxy Server and Port
+   'connector.Property("ProxyServer") = "fully-qualified-proxy-server-or-IPAddress:Port"
+
+  
+   'Setting up the Web Service URL
+   connector.Property("EndPointURL") = "http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl"
+  
+   'Setting up Timeout period for the service call
+   'connector.Property("Timeout") = 2000 '2 minutes
+  
+   'Setting up the SOAP Action i.e., the actual method to be called
+   connector.Property("SoapAction") = "urn:getSampleData"
+  
+   'Beginning SOAP Message
+   connector.BeginMessage
+  
+   'Initializing SOAP Serializer with connector's input stream
+   Dim writer As New MSSOAPLib30.SoapSerializer30
+   writer.Init connector.InputStream
+
+   'Building the SOAP Request - envelope and body
+   writer.startEnvelope              ' <SOAP-ENV:Envelope>
+   writer.startBody                  ' <SOAP-ENV:Body>
+
+   'Populating the SOAP Request with actual input parameters
+   writer.startElement "SampleServiceRequest", "service namespace", , "s3"   ' <SampleServiceRequest>
+  
+   writer.startElement "inputParam1"   ' <inputParam1>
+   writer.writeString "param1 value"    ' value of inputParam1
+   writer.endElement                 ' </inputParam1>
+
+   writer.startElement "inputParam2"   ' <inputParam2>
+   writer.writeString "param2 value"        ' value of inputParam2
+   writer.endElement                 ' </inputParam2>
+
+   writer.startElement "inputParam3"   ' <inputParam3>
+   writer.writeString "param3 value"        ' value of inputParam3
+   writer.endElement                 ' </inputParam3>
+
+   'Populating list-type parameter
+   writer.startElement "paramList"   ' <paramList>
+
+    'Adding node #1 to the list-type param
+    writer.startElement "paramListNode"    ' <paramListNode>
+     writer.startElement "nodeParam1"          ' <nodeParam1>
+      writer.writeString "value1"                    ' value of nodeParam1
+     writer.endElement                          ' </nodeParam1>
+  
+     writer.startElement "nodeParam2"          ' <nodeParam2>
+      writer.writeString "value1"                    ' value of nodeParam2
+     writer.endElement                          ' </nodeParam2>
+    writer.endElement                          ' </paramListNode>
+ 
+    'Adding node #2 to the list-type param
+    writer.startElement "paramListNode"    ' <paramListNode>
+     writer.startElement "nodeParam1"          ' <nodeParam1>
+      writer.writeString "value2"                    ' value of nodeParam1
+     writer.endElement                          ' </nodeParam1>
+  
+     writer.startElement "nodeParam2"          ' <nodeParam2>
+      writer.writeString "value2"                    ' value of nodeParam2
+     writer.endElement                          ' </nodeParam2>
+    writer.endElement                          ' </paramListNode>
+  
+   'Population of list-type param ends here
+   writer.endElement                          ' </paramList>
+
+   'Finishing the SOAP Request
+   writer.endElement                 ' </SampleServiceRequest>
+   writer.endBody                    ' </SOAP-ENV:Body>
+   writer.endEnvelope                ' </SOAP-ENV:Envelope>
+  
+   'Sending the SOAP Message (this is where the service call is made)
+   connector.EndMessage
+  
+   'Defining SOAP Reader and initializing it with connector's output stream
+   Dim reader As New MSSOAPLib30.SoapReader30
+   reader.load connector.OutputStream
+  
+   'Parsing the SOAP Response
+   Dim response As MSXML2.IXMLDOMNodeList
+
+   'Setting the response to the first node of the SOAP Response
+   Set response = reader.RPCResult.ChildNodes
+   Dim node As MSXML2.IXMLDOMNode
+
+   'Iterating through the first node of SOAP Response knowing it is a list
+   For Each node In response
+    Dim nodeName As String
+    Dim nodeValue As String
+  
+    nodeName = node.nodeName
+    nodeValue = node.nodeTypedValue
+  
+    'Showing the Node Name and Value on Alert Boxes
+    MsgBox node.nodeName & ": " & node.nodeTypedValue
+   Next node
+End Sub
+
+Private Sub ToggleButton8_Click()
+Dim path As String
+ TextBox7.text = "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\Convert Text to Speech WAV.wav"
+path = TextBox7.text
+Call InsertAudio1(path, Slide1)
+
+End Sub
+Sub InsertAudio1(Track As String, oSlide As Slide)
+Dim a, b As Integer
+'a = Slide1.TimeLine.MainSequence.Count
+'For x = Slide1.TimeLine.MainSequence.Count To 1 Step -1
+'Slide1.TimeLine.MainSequence.Item(x).Delete
+'Counter = Counter + 1
+'Next x
+For x = Slide1.Shapes.count To 1 Step -1
+If Slide1.Shapes.Item(x).Type = msoMedia Then
+Slide1.Shapes.Item(x).Delete
+End If
+Counter = Counter + 1
+Next x
+Dim oShp As Shape
+Dim oEffect As Effect
+'For Each Shape In Slide1.Shapes
+ '  Shape.Delete
+'Next Shape
+'Add the audio shape
+
+
+
+Set oShp = oSlide.Shapes.AddMediaObject2(Track, True, False, 10, 10)
+
+'Set audio to play automatically
+Set oEffect = oSlide.TimeLine.MainSequence.AddEffect(oShp, msoAnimEffectMediaPlay, , msoAnimTriggerWithPrevious)
+
+oEffect.MoveTo 1
+'Slide1.TimeLine.MainSequence.Item(2).Delete
+'b = Slide1.Shapes.Count
+
+'Hide during slide show
+With oEffect
+    .EffectInformation.PlaySettings.HideWhileNotPlaying = True
+End With
+ToggleButton8.Enabled = False
+End Sub
+
+Private Sub ToggleButton9_Click()
+With Application.ActivePresentation.Slides(1)
+    .Export "D:\Flipkart.com and Amazon.in\amazon.in latest macro\" + title_textbox.text + "\" & _
+        "Vestiti.jpg", "JPG"
+End With
+ToggleButton9.Enabled = False
+End Sub
+
+
+Private Sub UserForm_Click()
+TextBox10.SetFocus
+comboboxVBA_Connect_To_MDB_ACCESS
+ComboBox2.ListIndex = CInt(TextBox12.text)
+Call loadcurrenturl
+ComboBox2.text = TextBox13.text
+End Sub
+
+
